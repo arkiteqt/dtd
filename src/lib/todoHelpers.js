@@ -10,3 +10,10 @@ export const updateTodo = (list, updated) => {
     ...list.slice(updatedIndex+1) // get all items after updated item
   ]
 }
+export const removeTodo = (list,id) => {
+  const removedIndex = list.findIndex(item => item.id === id)
+  return [
+    ...list.slice(0,removedIndex),
+    ...list.slice(removedIndex+1)
+  ]
+}
