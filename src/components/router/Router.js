@@ -21,10 +21,20 @@ export class Router extends Component{
       linkHandler : this.handleLinkClick
     }
   }
+
   handleLinkClick = (route) => {
     this.setState({route})
     window.history.pushState(null,'',route)
   }
+
+  componentDidMount(){
+    window.onpopstate = () => {
+      this.setState({
+        route : getCurrentPath()
+      })
+    }
+  }
+
   render() {
     return <div>{this.props.children}</div>
   }
