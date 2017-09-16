@@ -4,7 +4,7 @@ import './App.css';
 import {TodoForm, TodoList, Footer} from './components/todo'
 import {addTodo,generateId,findById,toggleTodo,updateTodo,removeTodo,filterTodos} from './lib/todoHelpers'
 import {pipe, partial} from './lib/utils'
-import {loadTodos,createTodo,saveTodo,destroyTodo} from './lib/todoService'
+import {loadTodos} from './lib/todoService'
 
 class App extends Component {
   state = {
@@ -25,29 +25,19 @@ class App extends Component {
     evt.preventDefault();
     const updatedTodos = removeTodo(this.state.todos, id)
     this.setState({ todos : updatedTodos})
-    destroyTodo(id)
-      .then(() => this.showTempMsg('todo removed'))
   }
 
   handleToggle = (id) => {
-    const getToggledTodo = pipe(findById, toggleTodo)
-    const updated = getToggledTodo(id, this.state.todos)
-    const getUpdatedTodos = partial(updateTodo, this.state.todos)
-    const updatedTodos = getUpdatedTodos(updated)
+    const getUpdatedTodos = pipe(findById, toggleTodo, partial(updateTodo, this.state.todos))
+    const updatedTodos = getUpdatedTodos(id, this.state.todos)
     this.setState({ todos : updatedTodos})
-    saveTodo(updated)
-      .then(() => this.showTempMsg('todo updated'))
+
   }
 
   handleInputChange = (evt) => {
     this.setState({
       currentTodo: evt.target.value
     })
-  }
-
-  showTempMsg = (msg) => {
-    this.setState({ message : msg})
-    setTimeout(() => this.setState({message : ''}), 2500)
   }
 
   handleSubmit = (evt) => {
@@ -60,8 +50,6 @@ class App extends Component {
       currentTodo : "",
       errorMessage : ""
     })
-    createTodo(newTodo)
-      .then(() => this.showTempMsg('todo added'))
   }
 
   handleEmptySubmit = (evt) => {
@@ -82,7 +70,6 @@ class App extends Component {
         </div>
         <div className="Todo-App">
           {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
-          {this.state.message && <span className="success">{this.state.message}</span>}
           <TodoForm
             handleInputChange={this.handleInputChange}
             currentTodo={this.state.currentTodo}
