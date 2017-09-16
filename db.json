@@ -1,18 +1,13 @@
 {
   "todos": [
     {
-      "id": 1,
-      "name": "Setup Server",
-      "isComplete": true
-    },
-    {
-      "id": 2,
-      "name": "Start Server",
-      "isComplete": true
-    },
-    {
       "id": 3,
       "name": "Connect to Server",
+      "isComplete": false
+    },
+    {
+      "id": 3961,
+      "name": "another one",
       "isComplete": false
     }
   ]
