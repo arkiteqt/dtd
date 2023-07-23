@@ -1,6 +1,6 @@
 {
-  "name": "todo",
-  "version": "0.1.0",
+  "name": "todo-app-frontend",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "react": "^15.6.1",

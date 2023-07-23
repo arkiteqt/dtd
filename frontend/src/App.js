@@ -18,7 +18,10 @@ class App extends Component {
 
   componentDidMount(){
     loadTodos()
-      .then(todos => this.setState({todos}))
+      .then(todos => {
+        console.log(todos);
+        this.setState({todos})
+      })
   }
 
   handleRemove = (id,evt) => {
