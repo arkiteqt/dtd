@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {TodoForm, TodoList, Footer} from './components/todo'
+import {TodoForm, TodoList} from './components/todo'
 import {addTodo,generateId,findById,toggleTodo,updateTodo,removeTodo,filterTodos} from './lib/todoHelpers'
 import {pipe, partial} from './lib/utils'
 import {loadTodos,createTodo,saveTodo,destroyTodo} from './lib/todoService'
@@ -19,7 +19,6 @@ class App extends Component {
   componentDidMount(){
     loadTodos()
       .then(todos => {
-        console.log(todos);
         this.setState({todos})
       })
   }
@@ -35,6 +34,7 @@ class App extends Component {
   handleToggle = (id) => {
     const getToggledTodo = pipe(findById, toggleTodo)
     const updated = getToggledTodo(id, this.state.todos)
+    console.log(updated);
     const getUpdatedTodos = partial(updateTodo, this.state.todos)
     const updatedTodos = getUpdatedTodos(updated)
     this.setState({ todos : updatedTodos})
@@ -55,14 +55,8 @@ class App extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    const newId = generateId()
-    const newTodo = {id : newId, name : this.state.currentTodo, isComplete: false}
-    const updatedTodos = addTodo(this.state.todos,newTodo)
-    this.setState({
-      todos : updatedTodos,
-      currentTodo : "",
-      errorMessage : ""
-    })
+    const newTodo = {title : this.state.currentTodo}
+    console.log(newTodo)
     createTodo(newTodo)
       .then(() => this.showTempMsg('todo added'))
   }
@@ -96,7 +90,6 @@ class App extends Component {
             todos={displayTodos}
             handleRemove={this.handleRemove}
           />
-          <Footer />
         </div>
       </div>
     );

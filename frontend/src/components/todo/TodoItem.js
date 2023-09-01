@@ -10,14 +10,9 @@ export const TodoItem = (props) => {
         onChange={handleToggle}
         checked={props.isComplete}
       />
-      {props.name}
+      {props.title}
       <span className="remove-item"><a href="#" onClick={handleRemove}>X</a></span>
     </li>
   )
 }
 
-TodoItem.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  isComplete: React.PropTypes.bool,
-  id : React.PropTypes.number.isRequired
-}

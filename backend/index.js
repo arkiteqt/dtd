@@ -11,17 +11,15 @@ app.use(express.urlencoded({extended: true}));
 // API Endpoints
 const mysql = require('mysql');
 
-const con = mysql.createConnection({
-    host: process.env.db_host,
-    user: process.env.db_user,
-    password: process.env.db_pswd,
-    port: process.env.db_port,
-	database: process.env.db_name
-});
-
-
 // TODOS
 app.get('/todos', async (req,res) =>{
+	const con = mysql.createConnection({
+		host: process.env.db_host,
+		user: process.env.db_user,
+		password: process.env.db_pswd,
+		port: process.env.db_port,
+		database: process.env.db_name
+	});
 	con.connect(function(err) {
 		if (err) throw err;
 		console.log("Connected!");
@@ -35,35 +33,57 @@ app.get('/todos', async (req,res) =>{
 })
 
 app.post('/todos', async (req,res) =>{
+	const con = mysql.createConnection({
+		host: process.env.db_host,
+		user: process.env.db_user,
+		password: process.env.db_pswd,
+		port: process.env.db_port,
+		database: process.env.db_name
+	});
 	console.log(req.body);
 	con.connect(function(err) {
 		if (err) throw err;
 		console.log("Connected!");
-		const sql = `INSERT INTO Tasks (title) VALUES ('${req.body.name}')`;
+		const sql = `INSERT INTO Tasks (title) VALUES ('${req.body.title}')`;
 		con.query(sql, function (err, result) {
 			if (err) throw err;
-			console.log("Result: " + result);
-			res.json(result)
+			console.log("Result: " , result);
+			res.json(200)
 		});
 	});
 })
 
 
-app.post('/todos/:id', async (req,res) =>{
-	console.log(req.body);
+app.put('/todos/:id', async (req,res) =>{
+	const con = mysql.createConnection({
+		host: process.env.db_host,
+		user: process.env.db_user,
+		password: process.env.db_pswd,
+		port: process.env.db_port,
+		database: process.env.db_name
+	});
+	console.log(req.body, req.params.id);
 	con.connect(function(err) {
 		if (err) throw err;
 		console.log("Connected!");
-		const sql = `UPDATE Tasks SET description = '${req.body.description}' WHERE id = ${req.params.id}`;
+		const sql = `UPDATE Tasks SET isComplete = ${req.body.isComplete} WHERE id = ${req.params.id}`;
+		console.log(sql);
 		con.query(sql, function (err, result) {
 			if (err) throw err;
-			console.log("Result: " + result);
+			console.log("Result: " , result);
 			res.json(result)
 		});
 	});
 })
 
 app.delete('/todos/:id', async (req,res) =>{
+	const con = mysql.createConnection({
+		host: process.env.db_host,
+		user: process.env.db_user,
+		password: process.env.db_pswd,
+		port: process.env.db_port,
+		database: process.env.db_name
+	});
 	console.log(req.body);
 	con.connect(function(err) {
 		if (err) throw err;
@@ -71,7 +91,7 @@ app.delete('/todos/:id', async (req,res) =>{
 		const sql = `DELETE FROM Tasks WHERE id = ${req.params.id}`;
 		con.query(sql, function (err, result) {
 			if (err) throw err;
-			console.log("Result: " + result);
+			console.log("Result: " , result);
 			res.json(result)
 		});
 	});

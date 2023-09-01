@@ -13,7 +13,7 @@ export const createTodo = (todo) => {
       'Content-Type' : 'application/json'
     },
     body : JSON.stringify(todo)
-  }).then(res => res.json())
+  }).then(res => console.log(res))
 }
 
 export const saveTodo = (todo) => {
