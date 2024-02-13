@@ -1,0 +1,19 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd ./frontend && npm run start && cd ../backend && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitrathik/todo-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitrathik/todo-app/issues"
+  },
+  "homepage": "https://github.com/amitrathik/todo-app#readme"
+}
