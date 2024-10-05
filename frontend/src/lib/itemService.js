@@ -1,33 +1,33 @@
-const baseUrl = 'http://localhost:3000/todos'
+const baseUrl = 'http://localhost:3000/items'
 
-export const loadTodos = () => {
+export const loadItems = () => {
   return fetch(baseUrl)
     .then(res => res.json())
 }
 
-export const createTodo = (todo) => {
+export const createItem = (item) => {
   return fetch(baseUrl,{
     method : 'POST',
     headers : {
       'Accept' : 'application/json',
       'Content-Type' : 'application/json'
     },
-    body : JSON.stringify(todo)
+    body : JSON.stringify(item)
   }).then(res => console.log(res))
 }
 
-export const saveTodo = (todo) => {
-  return fetch(`${baseUrl}/${todo.id}`,{
+export const saveItem = (item) => {
+  return fetch(`${baseUrl}/${item.id}`,{
     method : 'PUT',
     headers : {
       'Accept' : 'application/json',
       'Content-Type' : 'application/json'
     },
-    body : JSON.stringify(todo)
+    body : JSON.stringify(item)
   }).then(res => res.json())
 }
 
-export const destroyTodo = (id) => {
+export const destroyItem = (id) => {
   return fetch(`${baseUrl}/${id}`,{
     method : 'DELETE',
     headers : {

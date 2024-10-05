@@ -1,50 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {TodoForm, TodoList} from './components/todo'
-import {addTodo,generateId,findById,toggleTodo,updateTodo,removeTodo,filterTodos} from './lib/todoHelpers'
+import {ItemForm, ItemList} from './components/item'
+import {addItem,generateId,findById,toggleItem,updateItem,removeItem,filterItems} from './lib/itemHelpers'
 import {pipe, partial} from './lib/utils'
-import {loadTodos,createTodo,saveTodo,destroyTodo} from './lib/todoService'
+import {loadItems,createItem,saveItem,destroyItem} from './lib/itemService'
 
 class App extends Component {
   state = {
-    todos: [],
-    currentTodo : ''
-  }
-
-  static contextTypes = {
-    route : React.PropTypes.string
+    items: [],
+    currentItem : ''
   }
 
   componentDidMount(){
-    loadTodos()
-      .then(todos => {
-        this.setState({todos})
+    loadItems()
+      .then(items => {
+        this.setState({items})
       })
   }
 
   handleRemove = (id,evt) => {
     evt.preventDefault();
-    const updatedTodos = removeTodo(this.state.todos, id)
-    this.setState({ todos : updatedTodos})
-    destroyTodo(id)
-      .then(() => this.showTempMsg('todo removed'))
+    const updatedItems = removeItem(this.state.item, id)
+    this.setState({ items : updatedItems})
+    destroyItem(id)
+      .then(() => this.showTempMsg('item removed'))
   }
 
   handleToggle = (id) => {
-    const getToggledTodo = pipe(findById, toggleTodo)
-    const updated = getToggledTodo(id, this.state.todos)
+    const getToggledItem = pipe(findById, toggleItem)
+    const updated = getToggledItem(id, this.state.items)
     console.log(updated);
-    const getUpdatedTodos = partial(updateTodo, this.state.todos)
-    const updatedTodos = getUpdatedTodos(updated)
-    this.setState({ todos : updatedTodos})
-    saveTodo(updated)
-      .then(() => this.showTempMsg('todo updated'))
+    const getUpdatedItems = partial(updateItem, this.state.items)
+    const updatedItems = getUpdatedItems(updated)
+    this.setState({ items : updatedItems})
+    saveItem(updated)
+      .then(() => this.showTempMsg('item updated'))
   }
 
   handleInputChange = (evt) => {
     this.setState({
-      currentTodo: evt.target.value
+      currentItem: evt.target.value
     })
   }
 
@@ -55,39 +49,38 @@ class App extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault()
-    const newTodo = {title : this.state.currentTodo}
-    console.log(newTodo)
-    createTodo(newTodo)
-      .then(() => this.showTempMsg('todo added'))
+    const newItem = {title : this.state.currentItem}
+    console.log(newItem)
+    createItem(newItem)
+      .then(() => this.showTempMsg('item added'))
   }
 
   handleEmptySubmit = (evt) => {
     evt.preventDefault();
     this.setState({
-      errorMessage : "Please supply a todo name"
+      errorMessage : "Please supply an item name"
     })
   }
 
   render() {
-    const submitHandler = this.state.currentTodo ? this.handleSubmit : this.handleEmptySubmit
-    const displayTodos = filterTodos(this.state.todos, this.context.route)
+    const submitHandler = this.state.currentItem ? this.handleSubmit : this.handleEmptySubmit
+    const displayItems = filterItems(this.state.items, this.context.route)
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Todo List</h2>
+          <h2>Item List</h2>
         </div>
         <div className="Todo-App">
           {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
           {this.state.message && <span className="success">{this.state.message}</span>}
-          <TodoForm
+          <ItemForm
             handleInputChange={this.handleInputChange}
-            currentTodo={this.state.currentTodo}
+            currentItem={this.state.currentItem}
             handleSubmit={submitHandler}
           />
-          <TodoList
+          <ItemList
             handleToggle={this.handleToggle}
-            todos={displayTodos}
+            items={displayItems}
             handleRemove={this.handleRemove}
           />
         </div>

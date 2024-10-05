@@ -1,7 +1,7 @@
 import React from 'react'
 import {partial} from '../../lib/utils.js'
 
-export const TodoItem = (props) => {
+export const Item = (props) => {
   const handleToggle = partial(props.handleToggle, props.id)
   const handleRemove = partial(props.handleRemove, props.id)
   return (
