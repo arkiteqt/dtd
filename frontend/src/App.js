@@ -19,7 +19,7 @@ class App extends Component {
 
   handleRemove = (id,evt) => {
     evt.preventDefault();
-    const updatedItems = removeItem(this.state.item, id)
+    const updatedItems = removeItem(this.state.items, id)
     this.setState({ items : updatedItems})
     destroyItem(id)
       .then(() => this.showTempMsg('item removed'))
@@ -50,7 +50,8 @@ class App extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault()
     const newItem = {title : this.state.currentItem}
-    console.log(newItem)
+    const updatedItems = addItem(this.state.items, newItem)
+    this.setState({ items : updatedItems})
     createItem(newItem)
       .then(() => this.showTempMsg('item added'))
   }
