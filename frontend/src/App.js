@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import "./styles/main.scss";
 
-import Dashboard from './views/Admin/Dashboard'
-import Catalog from './views/Public/Catalog'
+import Dashboard from './views/Dashboard'
 
-class Skew extends Component {
+class Dtd extends Component {
   state = {
     view : ''
   }
@@ -20,12 +19,6 @@ class Skew extends Component {
 		const route = this.state.view;
 		let view = "";
 		switch(route){
-			case "dashboard":
-				view = <Dashboard />
-				break;
-			case "catalog":
-				view = <Catalog />
-				break;
 			default:
 				view = <Dashboard />
 				break;
@@ -37,10 +30,7 @@ class Skew extends Component {
 						<ul>
 							<li>
 								<button type="button" name="dashboard" onClick={this.handleClick}>Dashboard</button>
-              </li>
-							<li>
-								<button type="button" name="catalog" onClick={this.handleClick}>Catalog</button>
-							</li>
+              				</li>
 						</ul>
 					</nav>
 					{view}	
@@ -49,4 +39,4 @@ class Skew extends Component {
     }
 }
 
-export default Skew;
+export default Dtd;

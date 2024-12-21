@@ -1,7 +1,7 @@
 {
-  "name": "todo-app-backend",
+  "name": "dtd-backend",
   "version": "1.0.0",
-  "description": "An API built with NodeJS and ExpressJS to support the CRUD functionality for the Todo App",
+  "description": "An API built with NodeJS and ExpressJS to support the CRUD functionality for the DTD Frontend",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",

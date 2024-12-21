@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import {ItemForm, ItemList} from '../../../components/item'
-import {addItem,generateId,findById,toggleItem,updateItem,removeItem,filterItems} from '../../../lib/itemHelpers'
-import {pipe, partial} from '../../../lib/utils'
-import {loadItems,createItem,saveItem,destroyItem} from '../../../lib/itemService'
+import {ItemForm, ItemList} from '../../components/item'
+import {addItem,generateId,findById,toggleItem,updateItem,removeItem,filterItems} from '../../lib/itemHelpers'
+import {pipe, partial} from '../../lib/utils'
+import {loadItems,createItem,saveItem,destroyItem} from '../../lib/itemService'
 
-class Inventory extends Component {
+class Dashboard extends Component {
   state = {
     items: [],
     currentItem : '',
@@ -66,31 +66,30 @@ class Inventory extends Component {
 
   render() {
     const submitHandler = this.state.currentItem ? this.handleSubmit : this.handleEmptySubmit
-    const displayItems = filterItems(this.state.items, this.context.route)
+    const displayItems = this.state.items;
     
     return (
-            <div className="Skew-App">
-        
-            <div className="Admin-Header">
-              <h2>Item List</h2>
-            </div>
-            <div className="Todo-App">
-              {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
-              {this.state.message && <span className="success">{this.state.message}</span>}
-              <ItemForm
-                handleInputChange={this.handleInputChange}
-                currentItem={this.state.currentItem}
-                handleSubmit={submitHandler}
-              />
-              <ItemList
-                handleToggle={this.handleToggle}
-                items={displayItems}
-                handleRemove={this.handleRemove}
-              />
+            <div className="Dtd-Dashboard">
+              <div className="Dashboard-Header">
+                <h2>Dashboard</h2>
               </div>
+              <div className="Dashboard-Content">
+                {this.state.errorMessage && <span className="error">{this.state.errorMessage}</span>}
+                {this.state.message && <span className="success">{this.state.message}</span>}
+                <ItemForm
+                  handleInputChange={this.handleInputChange}
+                  currentItem={this.state.currentItem}
+                  handleSubmit={submitHandler}
+                />
+                <ItemList
+                  handleToggle={this.handleToggle}
+                  items={displayItems}
+                  handleRemove={this.handleRemove}
+                />
+                </div>
             </div>
         );
     }
 }
 
-export default Inventory;
+export default Dashboard;
