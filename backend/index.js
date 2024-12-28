@@ -68,7 +68,9 @@ app.post(
             const query = 'INSERT INTO Users (Username, Email, PasswordHash) VALUES (?, ?, ?)';
             db.query(query, [username, email, passwordHash], (err, result) => {
                 if (err) return res.status(500).json({ error: err.message });
-                res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
+                console.log(result)
+                const token = jwt.sign({ userId:  result.insertId, username:username }, JWT_SECRET, { expiresIn: '1h' })
+                res.status(201).json({ message: 'User registered successfully', userId: result.insertId, token : token });
             });
         } catch (err) {
             res.status(500).json({ error: err.message });

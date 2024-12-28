@@ -6,7 +6,7 @@ import Profile from './components/Account/Profile';
 import Membership from './components/Account/Membership';
 
 const App = () => {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoiYXJraXRlcTIiLCJpYXQiOjE3MzU0MTg3NTUsImV4cCI6MTczNTQyMjM1NX0.wNiVdnFxDhVpkkm6pGeJSs8l5Bo4RvdUWNEzewybGXA");
 
     // Protected Route Component
     const ProtectedRoute = ({ children }) => {
@@ -16,7 +16,6 @@ const App = () => {
     return (
         <Router>
             <div>
-                <h1>Authentication and Membership</h1>
                 <Routes>
                     {/* Home Route */}
                     <Route
@@ -25,12 +24,19 @@ const App = () => {
                             token ? (
                                 <Navigate to="/profile" />
                             ) : (
-                                <>
-                                    <Login setToken={setToken} />
-                                    <Register />
-                                </>
+                                <Navigate to="/login" />
                             )
                         }
+                    />
+
+                    <Route
+                        path="/login"
+                        element={<Login setToken={setToken} />}
+                    />
+
+                    <Route
+                        path="/register"
+                        element={<Register setToken={setToken} />}
                     />
                     
                     {/* Protected Routes */}
