@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Dtd from './App';
+import TMD from './App';
 import "./styles/main.scss";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -13,4 +13,4 @@ library.add(fas, fab)
 
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<Dtd />);
+root.render(<TMD />);

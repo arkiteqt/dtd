@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Group, Mail, Code, Face, LockOutlined, Timeline} from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const Register = ({ setToken }) => {
@@ -51,7 +52,7 @@ const Register = ({ setToken }) => {
                         <div className="col-md-5 ml-auto">
                             <div className="info info-horizontal">
                                 <div className="icon icon-rose">
-                                <i className="material-icons">timeline</i>
+                                    <Timeline />
                                 </div>
                                 <div className="description">
                                 <h4 className="info-title">Marketing</h4>
@@ -62,7 +63,7 @@ const Register = ({ setToken }) => {
                             </div>
                             <div className="info info-horizontal">
                                 <div className="icon icon-primary">
-                                <i className="material-icons">code</i>
+                                    <Code />
                                 </div>
                                 <div className="description">
                                 <h4 className="info-title">Fully Coded in HTML5</h4>
@@ -73,7 +74,8 @@ const Register = ({ setToken }) => {
                             </div>
                             <div className="info info-horizontal">
                                 <div className="icon icon-info">
-                                <i className="material-icons">group</i>
+                                {/* <i className="material-icons">group</i> */}
+                                <Group />
                                 </div>
                                 <div className="description">
                                 <h4 className="info-title">Built Audience</h4>
@@ -98,7 +100,7 @@ const Register = ({ setToken }) => {
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                 <span className="input-group-text">
-                                    <i className="material-icons">face</i>
+                                    <Face />
                                 </span>
                                 </div>
                                 <input
@@ -116,7 +118,7 @@ const Register = ({ setToken }) => {
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                 <span className="input-group-text">
-                                    <i className="material-icons">mail</i>
+                                    <Mail />
                                 </span>
                                 </div>
                                 <input
@@ -134,7 +136,7 @@ const Register = ({ setToken }) => {
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                 <span className="input-group-text">
-                                    <i className="material-icons">lock_outline</i>
+                                    <LockOutlined />
                                 </span>
                                 </div>
                                 <input
@@ -158,7 +160,7 @@ const Register = ({ setToken }) => {
                             </label>
                             </div>
                             <div className="text-center">
-                            <a href="#pablo" className="btn btn-primary btn-round">Get Started</a>
+                            <button className="btn btn-primary btn-round">Get Started</button>
                             </div>
                         </form>
                         </div>

@@ -6,7 +6,7 @@ import Profile from './components/Account/Profile';
 import Membership from './components/Account/Membership';
 
 const App = () => {
-    const [token, setToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoiYXJraXRlcTIiLCJpYXQiOjE3MzU0MTg3NTUsImV4cCI6MTczNTQyMjM1NX0.wNiVdnFxDhVpkkm6pGeJSs8l5Bo4RvdUWNEzewybGXA");
+    const [token, setToken] = useState(null);
 
     // Protected Route Component
     const ProtectedRoute = ({ children }) => {

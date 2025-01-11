@@ -1,7 +1,7 @@
 {
-  "name": "dtd-backend",
+  "name": "tmd-be",
   "version": "1.0.0",
-  "description": "An API built with NodeJS and ExpressJS to support the CRUD functionality for the DTD Frontend",
+  "description": "TMD Backend",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",

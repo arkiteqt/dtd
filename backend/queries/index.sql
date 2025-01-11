@@ -1,5 +1,5 @@
-CREATE DATABASE `dtd_db`;
-CREATE TABLE `dtd_db`.`Users` (
+CREATE DATABASE `dao_db`;
+CREATE TABLE `dao_db`.`Users` (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) NOT NULL UNIQUE,
     Email VARCHAR(255) NOT NULL UNIQUE,
@@ -8,7 +8,7 @@ CREATE TABLE `dtd_db`.`Users` (
     LastLogin TIMESTAMP NULL,
     IsActive BOOLEAN DEFAULT FALSE
 );
-CREATE TABLE `dtd_db`.`Membership` (
+CREATE TABLE `dao_db`.`Membership` (
     MembershipID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT NOT NULL,
     ActivationToken VARCHAR(255) NOT NULL UNIQUE,

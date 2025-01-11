@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavigate } from 'react-router-dom';
+import {Mail,LockOutlined} from '@mui/icons-material';
+
 
 const Login = ({ setToken }) => {
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -59,7 +61,7 @@ const Login = ({ setToken }) => {
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
-                                    <i className="material-icons">mail</i>
+                                        <Mail />
                                     </span>
                                 </div>
                                 <input
@@ -75,7 +77,7 @@ const Login = ({ setToken }) => {
                             <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">
-                                    <i className="material-icons">lock_outline</i>
+                                        <LockOutlined />
                                     </span>
                                 </div>
                                 <input

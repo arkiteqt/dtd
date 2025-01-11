@@ -1,3 +1,3 @@
-# Devin' the D
+# The MobiDev
 
-A community-driven web app
+A DAO
