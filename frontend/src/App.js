@@ -4,7 +4,7 @@ import Register from './components/Onboarding/Register';
 import Login from './components/Onboarding/Login';
 import Profile from './components/Account/Profile';
 import Membership from './components/Account/Membership';
-
+import Dashboard from './components/Account/Dashboard';
 const App = () => {
     const [token, setToken] = useState(null);
 
@@ -22,7 +22,7 @@ const App = () => {
                         path="/"
                         element={
                             token ? (
-                                <Navigate to="/profile" />
+                                <Navigate to="/dashboard" />
                             ) : (
                                 <Navigate to="/login" />
                             )
@@ -53,6 +53,14 @@ const App = () => {
                         element={
                             <ProtectedRoute>
                                 <Membership token={token} />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <ProtectedRoute>
+                                <Dashboard token={token} />
                             </ProtectedRoute>
                         }
                     />
