@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Register from './components/Onboarding/Register';
 import Login from './components/Onboarding/Login';
@@ -6,7 +6,27 @@ import Profile from './components/Account/Profile';
 import Membership from './components/Account/Membership';
 import Dashboard from './components/Account/Dashboard';
 const App = () => {
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState(() => localStorage.getItem('token'));
+
+    // Save token to localStorage
+    const handleSetToken = (newToken) => {
+        setToken(newToken);
+        localStorage.setItem('token', newToken);
+    };
+
+    // Logout function
+    const handleLogout = () => {
+        setToken(null);
+        localStorage.removeItem('token');
+    };
+
+    useEffect(() => {
+        // Automatically check if token exists on app load
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        }
+    }, []);
 
     // Protected Route Component
     const ProtectedRoute = ({ children }) => {
@@ -31,12 +51,12 @@ const App = () => {
 
                     <Route
                         path="/login"
-                        element={<Login setToken={setToken} />}
+                        element={<Login setToken={handleSetToken} />}
                     />
 
                     <Route
                         path="/register"
-                        element={<Register setToken={setToken} />}
+                        element={<Register setToken={handleSetToken} />}
                     />
                     
                     {/* Protected Routes */}
@@ -60,18 +80,11 @@ const App = () => {
                         path="/dashboard"
                         element={
                             <ProtectedRoute>
-                                <Dashboard token={token} />
+                                <Dashboard token={token} logout={handleLogout}/>
                             </ProtectedRoute>
                         }
                     />
                 </Routes>
-
-                {/* Logout Button */}
-                {token && (
-                    <button onClick={() => setToken(null)} style={{ marginTop: '20px' }}>
-                        Logout
-                    </button>
-                )}
             </div>
         </Router>
     );

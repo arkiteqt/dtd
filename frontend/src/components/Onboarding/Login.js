@@ -97,7 +97,7 @@ const Login = ({ setToken }) => {
                                     </div>
                                 </div>
                                 
-                                <div class="text-center">
+                                <div className="text-center">
                                     <button type="submit" className="btn btn-primary btn-round btn-wd btn-lg">Sign In</button>
                                 </div>
 
