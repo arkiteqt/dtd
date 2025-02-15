@@ -1,5 +1,51 @@
-// @use 'bootstrap'
-/*     brand Colors              */
+/* Coolors Exported Palette - https://coolors.co/393b3d-292d33-898c8f-414243-1d2229 */
+
+// /* CSS HEX */
+// --onyx: #393B3Dff;
+// --gunmetal: #292D33ff;
+// --battleship-gray: #898C8Fff;
+// --onyx-2: #414243ff;
+// --raisin-black: #1D2229ff;
+
+// /* CSS HSL */
+// --onyx: hsla(210, 3%, 23%, 1);
+// --gunmetal: hsla(216, 11%, 18%, 1);
+// --battleship-gray: hsla(210, 3%, 55%, 1);
+// --onyx-2: hsla(210, 2%, 26%, 1);
+// --raisin-black: hsla(215, 17%, 14%, 1);
+
+/* SCSS HEX */
+$onyx: #393B3Dff;
+$gunmetal: #292D33ff;
+$battleship-gray: #898C8Fff;
+$onyx-2: #414243ff;
+$raisin-black: #1D2229ff;
+
+/* SCSS HSL */
+$onyx: hsla(210, 3%, 23%, 1);
+$gunmetal: hsla(216, 11%, 18%, 1);
+$battleship-gray: hsla(210, 3%, 55%, 1);
+$onyx-2: hsla(210, 2%, 26%, 1);
+$raisin-black: hsla(215, 17%, 14%, 1);
+
+/* SCSS RGB */
+$onyx: rgba(57, 59, 61, 1);
+$gunmetal: rgba(41, 45, 51, 1);
+$battleship-gray: rgba(137, 140, 143, 1);
+$onyx-2: rgba(65, 66, 67, 1);
+$raisin-black: rgba(29, 34, 41, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-right: linear-gradient(90deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-bottom: linear-gradient(180deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-left: linear-gradient(270deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-top-right: linear-gradient(45deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-bottom-right: linear-gradient(135deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-top-left: linear-gradient(225deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-bottom-left: linear-gradient(315deg, #393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+$gradient-radial: radial-gradient(#393B3Dff, #292D33ff, #898C8Fff, #414243ff, #1D2229ff);
+
 .carousel.carousel-full-nagivation .left {
     cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"), default !important; }
   
@@ -37,7 +83,9 @@
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fafafa; }
+    background-image: url('../../img/dtd-background-tile.png'); 
+    background-repeat: repeat;
+  }
   
   [tabindex="-1"]:focus {
     outline: 0 !important; }
